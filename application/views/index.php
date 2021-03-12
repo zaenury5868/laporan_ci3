@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title><?= $title; ?></title>
 </head>
 
 <body>
@@ -19,7 +19,44 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-
+                        <?= form_open_multipart('laporan/uploaddata') ?>
+                        <div class="row">
+                            <div class="col-4">
+                                <input type="file" class="form-control-file" id="importexcel" name="importexcel"
+                                    accept=".xlsx,.xls">
+                            </div>
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary">import</button>
+                            </div>
+                            <div class="col">
+                                <?= $this->session->flashdata('pesan'); ?>
+                            </div>
+                        </div>
+                        <?= form_close(); ?>
+                    </div>
+                </div>
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">kode barang</th>
+                                    <th scope="col">nama barang</th>
+                                    <th scope="col">jumlah</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i = 1; foreach($semuabarang as $barang ) : ?>
+                                <tr>
+                                    <td><?= $i++; ?></td>
+                                    <td><?= $barang['kode_barang']; ?></td>
+                                    <td><?= $barang['nama_barang']; ?></td>
+                                    <td><?= $barang['jumlah']; ?></td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
