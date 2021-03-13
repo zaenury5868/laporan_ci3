@@ -37,6 +37,11 @@
                 </div>
                 <div class="card mt-2">
                     <div class="card-body">
+                        <a href="<?= base_url('laporan/mpdf');?>" class="btn btn-danger">export pdf</a>
+                    </div>
+                </div>
+                <div class="card mt-2">
+                    <div class="card-body">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -44,6 +49,7 @@
                                     <th scope="col">kode barang</th>
                                     <th scope="col">nama barang</th>
                                     <th scope="col">jumlah</th>
+                                    <th scope="col">tanggal masuk barang</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -53,6 +59,7 @@
                                     <td><?= $barang['kode_barang']; ?></td>
                                     <td><?= $barang['nama_barang']; ?></td>
                                     <td><?= $barang['jumlah']; ?></td>
+                                    <td><?= date('d F Y', $barang['date_created']); ?></td>
                                 </tr>
                                 <?php endforeach; ?>
                             </tbody>

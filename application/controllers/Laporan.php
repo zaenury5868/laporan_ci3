@@ -56,4 +56,13 @@ class Laporan extends CI_Controller {
 			echo "error:" . $this->upload->display_errors();
 		};
 	}
+
+	public function mpdf()
+	{
+		$mpdf = new \Mpdf\Mpdf();
+		$databarang = $this->Barang_model->getDataBarang();
+		$data = $this->load->view('pdf/mpdf', ['semuabarang' => $databarang], TRUE);
+		$mpdf->WriteHTML($data);
+		$mpdf->Output();
+	}
 }
