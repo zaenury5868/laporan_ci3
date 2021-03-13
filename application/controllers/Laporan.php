@@ -72,4 +72,11 @@ class Laporan extends CI_Controller {
 		$data['semuabarang'] = $this->Barang_model->getDataBarang();
 		$this->load->view('excel/excel', $data);
 	}
+
+	public function highchart()
+	{
+		$data['title'] = 'export grafik';
+		$data['semuabarang'] = $this->Barang_model->getDataBarang();
+		$this->load->view('grafik/highchart', $data);
+	}
 }

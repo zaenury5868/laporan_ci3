@@ -39,6 +39,7 @@
                     <div class="card-body">
                         <a href="<?= base_url('laporan/mpdf');?>" class="btn btn-danger">export pdf</a>
                         <a href="<?= base_url('laporan/excel');?>" class="btn btn-success">export excel</a>
+                        <a href="<?= base_url('laporan/highchart');?>" class="btn btn-info">export grafik</a>
 
                     </div>
                 </div>
