@@ -38,6 +38,8 @@
                 <div class="card mt-2">
                     <div class="card-body">
                         <a href="<?= base_url('laporan/mpdf');?>" class="btn btn-danger">export pdf</a>
+                        <a href="<?= base_url('laporan/excel');?>" class="btn btn-success">export excel</a>
+
                     </div>
                 </div>
                 <div class="card mt-2">

@@ -65,4 +65,11 @@ class Laporan extends CI_Controller {
 		$mpdf->WriteHTML($data);
 		$mpdf->Output();
 	}
+
+	public function excel()
+	{
+		$data['title'] = 'laporan excel';
+		$data['semuabarang'] = $this->Barang_model->getDataBarang();
+		$this->load->view('excel/excel', $data);
+	}
 }
