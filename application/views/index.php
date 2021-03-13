@@ -37,10 +37,38 @@
                 </div>
                 <div class="card mt-2">
                     <div class="card-body">
+                        <form class="mb-4" method="GET" action="">
+                            <div class="row">
+                                <div class="col-3">
+                                    <input type="date" class="form-control" name="tanggalawal">
+                                </div>
+                                <div class="col-3">
+                                    <input type="date" class="form-control" name="tanggalakhir">
+                                </div>
+                                <div class="col-3">
+                                    <button type="submit" class="btn btn-primary">cari</button>
+                                </div>
+                            </div>
+                        </form>
+                        <?php 
+						$tanggalawal = $this->input->get('tanggalawal');
+						$tanggalakhir = $this->input->get('tanggalakhir');
+						?>
+                        <?php if(!$tanggalawal && !$tanggalakhir): ?>
                         <a href="<?= base_url('laporan/mpdf');?>" class="btn btn-danger">export pdf</a>
                         <a href="<?= base_url('laporan/excel');?>" class="btn btn-success">export excel</a>
                         <a href="<?= base_url('laporan/highchart');?>" class="btn btn-info">export grafik</a>
-
+                        <h4 class="text-center mt-2">laporan barang masuk tanggal <?= date('d F Y'); ?></h4>
+                        <?php else : ?>
+                        <a href="<?= base_url('laporan/mpdf?tanggalawal='.$tanggalawal.'&tanggalakhir='.$tanggalakhir); ?>"
+                            class="btn btn-danger">export pdf</a>
+                        <a href="<?= base_url('laporan/excel?tanggalawal='.$tanggalawal.'&tanggalakhir='.$tanggalakhir); ?>"
+                            class="btn btn-success">export excel</a>
+                        <a href="<?= base_url('laporan/highchart?tanggalawal='.$tanggalawal.'&tanggalakhir='.$tanggalakhir); ?>"
+                            class="btn btn-info">export grafik</a>
+                        <h4 class="text-center mt-2">laporan barang masuk tanggal
+                            <?= $tanggalawal . ' sampai dengan ' . $tanggalakhir ?></h4>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="card mt-2">
@@ -90,5 +118,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
     -->
 </body>
+
+
+</html>
 
 </html>

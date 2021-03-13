@@ -16,8 +16,10 @@ class Laporan extends CI_Controller {
 
 	public function index()
 	{
+		$tanggalawal = $this->input->get('tanggalawal');
+		$tanggalakhir = $this->input->get('tanggalakhir');
 		$data['title'] = ' laporan import';
-		$data['semuabarang'] = $this->Barang_model->getDataBarang();
+		$data['semuabarang'] = $this->Barang_model->getDataBarang($tanggalawal, $tanggalakhir);
 		$this->load->view('index', $data);
 	}
 
@@ -59,8 +61,10 @@ class Laporan extends CI_Controller {
 
 	public function mpdf()
 	{
+		$tanggalawal = $this->input->get('tanggalawal');
+		$tanggalakhir = $this->input->get('tanggalakhir');
 		$mpdf = new \Mpdf\Mpdf();
-		$databarang = $this->Barang_model->getDataBarang();
+		$databarang = $this->Barang_model->getDataBarang($tanggalawal, $tanggalakhir);
 		$data = $this->load->view('pdf/mpdf', ['semuabarang' => $databarang], TRUE);
 		$mpdf->WriteHTML($data);
 		$mpdf->Output();
@@ -68,15 +72,19 @@ class Laporan extends CI_Controller {
 
 	public function excel()
 	{
+		$tanggalawal = $this->input->get('tanggalawal');
+		$tanggalakhir = $this->input->get('tanggalakhir');
 		$data['title'] = 'laporan excel';
-		$data['semuabarang'] = $this->Barang_model->getDataBarang();
+		$data['semuabarang'] = $this->Barang_model->getDataBarang($tanggalawal, $tanggalakhir);
 		$this->load->view('excel/excel', $data);
 	}
 
 	public function highchart()
 	{
+		$tanggalawal = $this->input->get('tanggalawal');
+		$tanggalakhir = $this->input->get('tanggalakhir');
 		$data['title'] = 'export grafik';
-		$data['semuabarang'] = $this->Barang_model->getDataBarang();
+		$data['semuabarang'] = $this->Barang_model->getDataBarang($tanggalawal, $tanggalakhir);
 		$this->load->view('grafik/highchart', $data);
 	}
 }
